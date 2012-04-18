@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest 
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:installLocation="auto"
+	android:versionCode="1" 
+	android:versionName="1.0" 
+	package="com.bullno1.moainao">
+	
+	<application 
+		android:icon="@drawable/icon" 
+		android:debuggable="true" 
+		android:enabled="true" 
+		android:persistent="false" 
+		android:label="@string/app_name"
+		android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+		
+		<!-- Moai -->
+		<activity 
+			android:name="MoaiNao" 
+			android:label="Moai Nao Settings" 
+			android:screenOrientation= "landscape"
+			android:launchMode="singleTask"
+			android:configChanges="keyboard|keyboardHidden|orientation">
+			
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+		<activity 
+			android:name="MoaiActivityLandscape" 
+			android:label="Moai Nao (Landscape)" 
+			android:screenOrientation= "landscape"
+			android:launchMode="singleTask"
+			android:configChanges="keyboard|keyboardHidden|orientation">
+			
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="file" />
+				<data android:mimeType="*/*" />
+				<data android:pathPattern=".*\\.moai" />
+				<data android:host="*" />
+			</intent-filter>
+		</activity>
+
+		<activity 
+			android:name="MoaiActivityPortrait" 
+			android:label="Moai Nao (Portrait)" 
+			android:screenOrientation= "portrait"
+			android:launchMode="singleTask"
+			android:configChanges="keyboard|keyboardHidden|orientation">
+			
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="file" />
+				<data android:mimeType="*/*" />
+				<data android:pathPattern=".*\\.moai" />
+				<data android:host="*" />
+			</intent-filter>
+		</activity>
+		
+		<!-- EXTERNAL DECLARATIONS: Placeholder (DO NOT MOVE OR REMOVE) -->
+
+<!-- Tapjoy -->
+<activity android:name="com.tapjoy.TJCVirtualGoods" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:configChanges="keyboardHidden|orientation" />
+<activity android:name="com.tapjoy.DownloadVirtualGood" android:theme="@android:style/Theme.Dialog" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" />
+<activity android:name="com.tapjoy.TJCOffersWebView" android:configChanges="keyboardHidden|orientation" />
+<activity android:name="com.tapjoy.TapjoyFeaturedAppWebView" android:configChanges="keyboardHidden|orientation" />
+<activity android:name="com.tapjoy.TapjoyVideoView" android:configChanges="keyboardHidden|orientation" />
+<receiver android:name="com.tapjoy.TapjoyReferralTracker" android:exported="true">    
+    <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+    </intent-filter>
+</receiver>
+
+<!-- Google Push (C2DM) Messaging -->
+<receiver android:name="com.ziplinegames.moai.MoaiGooglePushReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+	<intent-filter>
+		<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+		<category android:name="com.bullno1.moainao" />
+	</intent-filter>
+	<intent-filter>
+		<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+		<category android:name="com.bullno1.moainao" />
+	</intent-filter>
+</receiver>
+
+<!-- Crittercism -->
+<activity android:name="com.crittercism.FeedbackActivity"/>
+<activity android:name="com.crittercism.FeedbackCreateActivity"/>
+<activity android:name="com.crittercism.FeedbackDetailsActivity"/>
+<activity android:name="com.crittercism.NotificationActivity"/>
+<service android:name="com.crittercism.service.CrittercismService" android:process="com.crittercism.service" android:exported="true">
+    <intent-filter><action android:name="com.crittercism.service.CrittercismService" /></intent-filter>
+</service>
+
+<!-- Google Billing (Android Market) IAP -->
+<service android:name="com.ziplinegames.moai.MoaiGoogleBillingService" />
+<receiver android:name="com.ziplinegames.moai.MoaiGoogleBillingReceiver">
+  <intent-filter>
+    <action android:name="com.android.vending.billing.IN_APP_NOTIFY" />
+    <action android:name="com.android.vending.billing.RESPONSE_CODE" />
+    <action android:name="com.android.vending.billing.PURCHASE_STATE_CHANGED" />
+  </intent-filter>
+</receiver>
+		
+	</application>
+	
+    <uses-sdk android:minSdkVersion="8"/>
+
+	<!-- Moai -->
+ 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+		
+	<!-- EXTERNAL PERMISSIONS: Placeholder (DO NOT MOVE OR REMOVE) -->
+
+<!-- Tapjoy -->
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+<!-- Google Push (C2DM) Messaging -->
+<permission android:name="com.bullno1.moainao.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+<uses-permission android:name="com.bullno1.moainao.permission.C2D_MESSAGE" />
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+<!-- Facebook -->
+<uses-permission android:name="android.permission.INTERNET" />
+
+<!-- Crittercism -->
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<!-- <uses-permission android:name="android.permission.GET_TASKS" /> Optional permission to allow Crittercism to access information about other running processes. -->
+<!-- <uses-permission android:name="android.permission.READ_LOGS"/> Optional permission to allow Crittercism to collect log data. -->
+
+<!-- Google Billing (Android Market) IAP -->
+<uses-permission android:name="com.android.vending.BILLING" />
+	
+	<supports-screens 
+	    	android:smallScreens="false"
+	    	android:normalScreens="true"
+	    	android:largeScreens="true"
+			android:xlargeScreens="true"
+	    	android:anyDensity="true" />
+	
+	<uses-configuration android:reqTouchScreen="finger" />
+	
+	<uses-feature android:name="android.hardware.screen.landscape" android:required="true" />
+	<uses-feature android:name="android.hardware.screen.portrait" android:required="true" />
+	<uses-feature android:name="android.hardware.touchscreen.multitouch" android:required="true" />
+</manifest>   
