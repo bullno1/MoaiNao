@@ -3,3 +3,12 @@
 /project/facebook/local.properties
 /project/tapjoy/local.properties
 /project/MoaiNao/local.properties
+/project/MoaiNao/proguard-project.txt
+/project/MoaiNao/bin
+/project/MoaiNao/gen
+/project/tapjoy/proguard-project.txt
+/project/tapjoy/bin
+/project/tapjoy/gen
+/project/facebook/proguard-project.txt
+/project/facebook/bin
+/project/facebook/gen
